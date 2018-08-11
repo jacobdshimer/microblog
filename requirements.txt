@@ -4,5 +4,8 @@ flask-wtf
 flask-sqlalchemy
 flask-migrate
 flask-login
-flask-email
+flask-mail
 pyjwt
+flask-moment
+flask-babel
+guess-language_spirit
