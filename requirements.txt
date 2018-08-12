@@ -9,3 +9,4 @@ pyjwt
 flask-moment
 flask-babel
 guess-language_spirit
+elasticsearch
