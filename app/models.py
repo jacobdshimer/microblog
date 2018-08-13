@@ -112,6 +112,18 @@ class Post(SearchableMixin, db.Model):
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     language = db.Column(db.String(5))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    replies = db.relationship('Replies', backref='posts', lazy=True)
+
+    def __repr__(self):
+        return '<Post {}>'.format(self.body)
+    
+class Replies(SearchableMixin, db.Model):
+    __searchable__ = ['body']
+    id = db.Column(db.Integer, primary_key=True)
+    body = db.Column(db.String(140))
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    language = db.Column(db.String(5))
+    post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)
